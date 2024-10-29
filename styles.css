@@ -35,6 +35,8 @@ body{
 	flex-grow: 1;
 	flex-basis: 120px;
 	height: 100px;
+	font-size: x-large;
+	font-weight: bold;
 }
 
 .end-row-btns{
@@ -42,7 +44,7 @@ body{
 	flex-grow: 1;
 }
 
-.end-row-btns .zero{
+.end-row-btns .equal{
 	flex-basis: 240px;
 	flex-grow: 2;
 }
