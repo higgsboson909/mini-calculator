@@ -6,7 +6,9 @@ const allBtns = document.querySelector(".all-btns");
 const displayText = document.querySelector(".display-text");
 
 // array to collect input
-let displayTextArray = [];
+let input = '';
+
+let number;
 
 // control input length
 const canInput = (arr) => {return arr.length < 9 ? true : false};
@@ -15,13 +17,16 @@ const canInput = (arr) => {return arr.length < 9 ? true : false};
 const displayInput = (arr, boxText, char) => {
 
     if(canInput(arr)){
-        arr.push(char);
-        let inString = arr.join('');
-        boxText.textContent = inString;
+        // concatenate with next char
+        input = arr + char;
+        // update the Screen
+        boxText.textContent = input;
     }
     else
-        alert("Screen is Full");
+        alert("Screen is Full");   
+    
 }
+
 // event listener for each button
 allBtns.addEventListener("click", (e) => {
     let target = e.target;
@@ -32,7 +37,7 @@ allBtns.addEventListener("click", (e) => {
             displayText.textContent = "";
 
             // empty the  input array 
-            displayTextArray= [];
+            input= '';
             break;
 
         case "change-sign":
@@ -48,41 +53,39 @@ allBtns.addEventListener("click", (e) => {
             break;
 
         case "seven":
-            displayInput(displayTextArray, displayText, "7");
-            
+            displayInput(input, displayText, "7");
             break;
 
-        case "eight":
-            
-            displayInput(displayTextArray, displayText, "8");
+        case "eight":            
+            displayInput(input, displayText, "8");
             break;
              
         case "nine":
-            displayInput(displayTextArray, displayText, "9");
+            displayInput(input, displayText, "9");
             break;
         
         case "six":
-            displayInput(displayTextArray, displayText, "6");
+            displayInput(input, displayText, "6");
             break;
         
         case "five":
-            displayInput(displayTextArray, displayText, "5");
+            displayInput(input, displayText, "5");
             break;
 
         case "four":
-            displayInput(displayTextArray, displayText, "4");
+            displayInput(input, displayText, "4");
             break;
 
         case "three":
-            displayInput(displayTextArray, displayText, "3");
+            displayInput(input, displayText, "3");
             break;
         
         case "two":
-            displayInput(displayTextArray, displayText, "2");
+            displayInput(input, displayText, "2");
             break;
         
         case "one":
-            displayInput(displayTextArray, displayText, "1");
+            displayInput(input, displayText, "1");
             break;
 
         case "div":
@@ -120,5 +123,5 @@ allBtns.addEventListener("click", (e) => {
     }
 
 
-    console.log(canInput(displayTextArray));
+    console.log(canInput(input));
 });
