@@ -5,15 +5,19 @@ const allBtns = document.querySelector(".all-btns");
 // refer text box in display
 const displayText = document.querySelector(".display-text");
 
-// array to collect inputj
+// array to collect input
 let displayTextArray = [];
 
 // control input length
-const canInput = (arr) => {return arr.length < 5 ? true : false};
-const getInput = (arr, boxText, char) => {
+const canInput = (arr) => {return arr.length < 9 ? true : false};
+
+// display array to screen
+const displayInput = (arr, boxText, char) => {
+
     if(canInput(arr)){
         arr.push(char);
-        boxText.textContent = arr;
+        let inString = arr.join('');
+        boxText.textContent = inString;
     }
     else
         alert("Screen is Full");
@@ -44,41 +48,41 @@ allBtns.addEventListener("click", (e) => {
             break;
 
         case "seven":
-            getInput(displayTextArray, displayText, "7");
+            displayInput(displayTextArray, displayText, "7");
             
             break;
 
         case "eight":
             
-            getInput(displayTextArray, displayText, "8");
+            displayInput(displayTextArray, displayText, "8");
             break;
              
         case "nine":
-            getInput(displayTextArray, displayText, "9");
+            displayInput(displayTextArray, displayText, "9");
             break;
         
         case "six":
-            getInput(displayTextArray, displayText, "6");
+            displayInput(displayTextArray, displayText, "6");
             break;
         
         case "five":
-            getInput(displayTextArray, displayText, "5");
+            displayInput(displayTextArray, displayText, "5");
             break;
 
         case "four":
-            getInput(displayTextArray, displayText, "4");
+            displayInput(displayTextArray, displayText, "4");
             break;
 
         case "three":
-            getInput(displayTextArray, displayText, "3");
+            displayInput(displayTextArray, displayText, "3");
             break;
         
         case "two":
-            getInput(displayTextArray, displayText, "2");
+            displayInput(displayTextArray, displayText, "2");
             break;
         
         case "one":
-            getInput(displayTextArray, displayText, "1");
+            displayInput(displayTextArray, displayText, "1");
             break;
 
         case "div":
@@ -98,7 +102,7 @@ allBtns.addEventListener("click", (e) => {
             break;
         
         case "zero":
-           
+
 
             break;
         
