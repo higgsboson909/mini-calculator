@@ -44,54 +44,41 @@ allBtns.addEventListener("click", (e) => {
             break;
 
         case "seven":
-            // getInput(displayTextArray, displayText, "7");
+            getInput(displayTextArray, displayText, "7");
             
-            if(canInput(displayTextArray)){
-                displayTextArray.push("7");
-                displayText.textContent = displayTextArray;
-            }
-            else
-            alert("Screen is Full");
             break;
 
         case "eight":
-            displayTextArray.push("8");
-            displayText.textContent = displayTextArray;
+            
+            getInput(displayTextArray, displayText, "8");
             break;
-        
+             
         case "nine":
-            displayTextArray.push("9");
-            displayText.textContent = displayTextArray;
+            getInput(displayTextArray, displayText, "9");
             break;
         
         case "six":
-            displayTextArray.push("6");
-            displayText.textContent = displayTextArray;
+            getInput(displayTextArray, displayText, "6");
             break;
         
         case "five":
-            displayTextArray.push("5");
-            displayText.textContent = displayTextArray;
+            getInput(displayTextArray, displayText, "5");
             break;
 
         case "four":
-            displayTextArray.push("4");
-            displayText.textContent = displayTextArray;
+            getInput(displayTextArray, displayText, "4");
             break;
 
         case "three":
-            displayTextArray.push("3");
-            displayText.textContent = displayTextArray;
+            getInput(displayTextArray, displayText, "3");
             break;
         
         case "two":
-            displayTextArray.push("2");
-            displayText.textContent = displayTextArray;
+            getInput(displayTextArray, displayText, "2");
             break;
         
         case "one":
-            displayTextArray.push("1");
-            displayText.textContent = displayTextArray;
+            getInput(displayTextArray, displayText, "1");
             break;
 
         case "div":
@@ -111,8 +98,8 @@ allBtns.addEventListener("click", (e) => {
             break;
         
         case "zero":
-            displayTextArray.push("0");
-            displayText.textContent = displayTextArray;
+           
+
             break;
         
         case "decimal":
