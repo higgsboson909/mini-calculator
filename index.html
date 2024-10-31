@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./styles.css" rel="stylesheet">
+  <script src="./mini-cal.js" defer></script>
   <title>Calculator | The Odin Project </title>
 </head>
 <body>
@@ -13,30 +14,30 @@
       <div class="screen">
         <div class="display-text"></div>
       </div> 
-      
-      <div class="allBtns">
-          <button class="clear">AC</button>
-          <button class="symbol">+/-</button>
-          <button class="symbol">%</button>
-          <button class="symbol">/</button>
-          <button class="num">7</button>
-          <button class="num">8</button>
-          <button class="num">9</button>
-          <button class="symbol">*</button>
-          <button class="num">4</button>
-          <button class="num">5</button>
-          <button class="num">6</button>
-          <button class="symbol">-</button>
-          <button class="num">1</button>
-          <button class="num">2</button>
-          <button class="num">3</button>
-          <button class="symbol">+</button>
+<div class="all-btns"> 
+      <div class="up-row-btns">
+          <button id="clear" class="clear">AC</button>
+          <button id="change-sign" class="symbol">+/-</button>
+          <button id="percent" class="symbol">%</button>
+          <button id="div" class="symbol">/</button>
+          <button id="seven" class="num">7</button>
+          <button id="eight" class="num">8</button>
+          <button id="nine" class="num">9</button>
+          <button id="product" class="symbol">*</button>
+          <button id="four" class="num">4</button>
+          <button id="five" class="num">5</button>
+          <button id="six" class="num">6</button>
+          <button id="subtract" class="symbol">-</button>
+          <button id="one" class="num">1</button>
+          <button id="two" class="num">2</button>
+          <button id="three" class="num">3</button>
+          <button id="sum" class="symbol">+</button>
         <div class="end-row-btns">
-          <button class="num">0</button>
-          <button class="decimal">.</button>
-          <button class="equal">=</button>
+          <button id="zero" class="num">0</button>
+          <button id="decimal" class="decimal">.</button>
+          <button id="equal" class="equal">=</button>
         </div>
-
+</div>
       </div>
 
     </div>

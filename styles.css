@@ -29,13 +29,13 @@ body{
 	align-items: center;
 }
 
-.allBtns{
+.up-row-btns{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 }
 
-.allBtns button{	
+.up-row-btns button{	
 	border-radius: 5px;
 	flex-grow: 1;
 	flex-basis: 120px;
