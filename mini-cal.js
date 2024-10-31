@@ -1,7 +1,13 @@
 
-
+// refer the div having all the buttons
 const allBtns = document.querySelector(".all-btns");
 
+// refer text box in display
+const displayText = document.querySelector(".display-text");
+
+let displayTextContent = [];
+
+// event listener for each button
 allBtns.addEventListener("click", (e) => {
     let target = e.target;
     switch(target.id){
@@ -21,39 +27,48 @@ allBtns.addEventListener("click", (e) => {
             break;
 
         case "seven":
-            console.log(7);
+            displayTextContent.push("7");
+            displayText.textContent = displayTextContent;
             break;
 
         case "eight":
-            console.log(8);
+            displayTextContent.push("8");
+            displayText.textContent = displayTextContent;
             break;
         
         case "nine":
-            console.log(9);
+            displayTextContent.push("9");
+            displayText.textContent = displayTextContent;
             break;
         
         case "six":
-            console.log(6);
+            displayTextContent.push("6");
+            displayText.textContent = displayTextContent;
             break;
         
         case "five":
-            console.log(5);
+            displayTextContent.push("5");
+            displayText.textContent = displayTextContent;
             break;
 
         case "four":
-            console.log(4);
+            displayTextContent.push("4");
+            displayText.textContent = displayTextContent;
             break;
 
         case "three":
-            console.log(3);
+            displayTextContent.push("3");
+            displayText.textContent = displayTextContent;
             break;
         
         case "two":
-            console.log(2);
+            displayTextContent.push("2");
+            displayText.textContent = displayTextContent;
             break;
         
         case "one":
-            console.log(1);
+            displayTextContent.push("1");
+            displayText.textContent = displayTextContent;
             break;
 
         case "div":
@@ -73,7 +88,8 @@ allBtns.addEventListener("click", (e) => {
             break;
         
         case "zero":
-            console.log("zero");
+            displayTextContent.push("0");
+            displayText.textContent = displayTextContent;
             break;
         
         case "decimal":
