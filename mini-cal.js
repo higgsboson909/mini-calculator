@@ -7,8 +7,22 @@ const displayText = document.querySelector(".display-text");
 
 displayText.textContent = "0";      // show 0 on screen by default
 
+// perform operations on numbers
+let operate = (o, num1, num2) => {
+    switch(o){
+        case '+':
+            return num1 + num2;
+            break;
+    }
+}
+
 // to collect input
 let input = '';
+
+// initial values
+let inputNum1 = 0;
+let inputNum2 = 0;
+let op = '';
 
 // control input length
 const canInput = (str) => {return str.length < 9 ? true : false};
@@ -19,13 +33,14 @@ const displayInput = (num, boxText, char) => {
     if(canInput(num)){
         // concatenate with next char
         input = num + char;
+
         // update the Screen
         boxText.textContent = input;
     }
     else
-        alert("Screen is Full");   
-    
+        alert("Screen is Full");       
 }
+
 
 // event listener for each button
 allBtns.addEventListener("click", (e) => {
@@ -35,13 +50,16 @@ allBtns.addEventListener("click", (e) => {
         case "clear":
             // show 0 on clearing the screen
             displayText.textContent = "0";
-
+            inputNum1 = inputNum2 = 0;
+            op = '';
             // empty the  input array 
             input= '';
             break;
 
         case "change-sign":
+
             console.log("sign-changed");
+
             break;
 
         case "percent":
@@ -101,7 +119,7 @@ allBtns.addEventListener("click", (e) => {
             break;
         
         case "div":
-            console.log("divide");
+            op = '/';
             break;
 
         case "product":
@@ -109,24 +127,26 @@ allBtns.addEventListener("click", (e) => {
             break;
         
         case "subtract":
+            op = '-';
             console.log("subtract");
             break;
         
-        case "add":
-            console.log("add");
+        case "sum":
+            op = '+';
+
+            // save 1st input
+            inputNum1 = +input;
+            input = '';
+
             break; 
 
-
-        
         case "equal":
-            console.log("equal");
+            inputNum2 = +input;
+            displayText.textContent = (operate(op, inputNum1, inputNum2));
+            input = '';
             break;
-
-
-        
-
     }
+    
 
 
-    console.log(canInput(input));
 });
