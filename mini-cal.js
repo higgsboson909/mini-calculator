@@ -5,20 +5,20 @@ const allBtns = document.querySelector(".all-btns");
 // refer text box in display
 const displayText = document.querySelector(".display-text");
 
-// array to collect input
+displayText.textContent = "0";      // show 0 on screen by default
+
+// to collect input
 let input = '';
 
-let number;
-
 // control input length
-const canInput = (arr) => {return arr.length < 9 ? true : false};
+const canInput = (str) => {return str.length < 9 ? true : false};
 
 // display array to screen
-const displayInput = (arr, boxText, char) => {
+const displayInput = (num, boxText, char) => {
 
-    if(canInput(arr)){
+    if(canInput(num)){
         // concatenate with next char
-        input = arr + char;
+        input = num + char;
         // update the Screen
         boxText.textContent = input;
     }
@@ -33,8 +33,8 @@ allBtns.addEventListener("click", (e) => {
     switch(target.id){
         
         case "clear":
-            // make text empty
-            displayText.textContent = "";
+            // show 0 on clearing the screen
+            displayText.textContent = "0";
 
             // empty the  input array 
             input= '';
@@ -88,6 +88,18 @@ allBtns.addEventListener("click", (e) => {
             displayInput(input, displayText, "1");
             break;
 
+        case "zero":
+            if(displayText.textContent !== '0'){
+                displayInput(input, displayText, "0");
+            }
+            break;
+        
+        case "decimal":
+            if(!(displayText.textContent.includes('.'))){
+                (displayText.textContent === '0') ? displayInput(input, displayText, "0.") : displayInput(input, displayText, "."); 
+            }
+            break;
+        
         case "div":
             console.log("divide");
             break;
@@ -102,16 +114,9 @@ allBtns.addEventListener("click", (e) => {
         
         case "add":
             console.log("add");
-            break;
-        
-        case "zero":
+            break; 
 
 
-            break;
-        
-        case "decimal":
-            console.log("deci");
-            break;
         
         case "equal":
             console.log("equal");
