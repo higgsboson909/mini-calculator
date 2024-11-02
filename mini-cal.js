@@ -10,13 +10,17 @@ displayText.textContent = "0";      // show 0 on screen by default
 // perform operations on numbers
 let operate = (o, num1, num2) => {
     switch(o){
+        // num1 as output if no operation is performed 
+        case '':
+            return num1;
+            break;
         case '+':
             return num1 + num2;
             break;
     }
 }
 
-// to collect input
+// to collect string input
 let input = '';
 
 // initial values
@@ -24,22 +28,46 @@ let inputNum1 = 0;
 let inputNum2 = 0;
 let op = '';
 
+// check for operator pressing
+let isOpPressed = (operator) => {return (operator !== '') ? true : false};
+
 // control input length
 const canInput = (str) => {return str.length < 9 ? true : false};
 
-// display array to screen
+// display input to screen
 const displayInput = (num, boxText, char) => {
 
     if(canInput(num)){
         // concatenate with next char
         input = num + char;
-
-        // update the Screen
         boxText.textContent = input;
+
+        // if no operator is pressed
+        if(!isOpPressed(op)){
+            // take input as 1st number
+            inputNum1 = +input;
+
+        } // if not
+        else if(isOpPressed(op)){
+            // take as 2nd number 
+            inputNum2 = +input;
+        }
     }
     else
         alert("Screen is Full");       
 }
+
+// calculate previous operations
+function calculatePrevious(op){
+    if(isOpPressed(op)){
+        
+        // calculate the previous values and insert as 1st value 
+        inputNum1 = operate(op, inputNum1, inputNum2);
+        // display the calculated value
+        displayText.textContent = inputNum1;
+        inputNum2 = 0;
+   }
+}  
 
 
 // event listener for each button
@@ -107,12 +135,14 @@ allBtns.addEventListener("click", (e) => {
             break;
 
         case "zero":
+            // control the default zero on screen 
             if(displayText.textContent !== '0'){
                 displayInput(input, displayText, "0");
             }
             break;
         
         case "decimal":
+            // allow only 1 decimal in string
             if(!(displayText.textContent.includes('.'))){
                 (displayText.textContent === '0') ? displayInput(input, displayText, "0.") : displayInput(input, displayText, "."); 
             }
@@ -132,21 +162,23 @@ allBtns.addEventListener("click", (e) => {
             break;
         
         case "sum":
+            calculatePrevious(op);
             op = '+';
-
-            // save 1st input
-            inputNum1 = +input;
             input = '';
-
             break; 
 
         case "equal":
-            inputNum2 = +input;
-            displayText.textContent = (operate(op, inputNum1, inputNum2));
+            
+            inputNum1 =  (operate(op, inputNum1, inputNum2));
+            displayText.textContent = inputNum1; 
             input = '';
+            inputNum2 = 0;
+            op = '';
             break;
     }
-    
+
 
 
 });
+
+
