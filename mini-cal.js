@@ -79,9 +79,10 @@ const displayInput = (num, boxText, char) => {
 function calculatePrevious(op){
     if(isOpPressed(op)){
         noNum2(op, inputNum2);
-        
+
         // calculate the previous values and insert as 1st value 
         inputNum1 = operate(op, inputNum1, inputNum2);
+        inputNum1 = roundAccurately(inputNum1);
         // display the calculated value
         displayText.textContent = inputNum1;
         inputNum2 = '';
@@ -211,8 +212,8 @@ allBtns.addEventListener("click", (e) => {
 
         case "equal":
             noNum2(op, inputNum2);
-
-            inputNum1 =  (operate(op, inputNum1, inputNum2));
+            inputNum1 = operate(op, inputNum1, inputNum2);
+            inputNum1 =  roundAccurately(inputNum1);
             displayText.textContent = inputNum1; 
             input = '';
             inputNum2 = '';
@@ -221,3 +222,7 @@ allBtns.addEventListener("click", (e) => {
     }
 
 });
+
+function roundAccurately(num) {
+    return parseFloat(Math.round(num + 'e' + 15) + 'e-' + 15);
+}
