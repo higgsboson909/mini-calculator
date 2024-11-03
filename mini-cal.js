@@ -9,6 +9,8 @@ displayText.textContent = "0";      // show 0 on screen by default
 
 // perform operations on numbers
 let operate = (o, num1, num2) => {
+    num1 = +num1;
+    num2 = +num2;
     switch(o){
         // num1 as output if no operation is performed 
         case '':
@@ -17,6 +19,22 @@ let operate = (o, num1, num2) => {
         case '+':
             return num1 + num2;
             break;
+        case '*':
+            return num1 * num2;
+            break;
+        case '/':
+            return num1 / num2;
+            break;
+        case '-':
+            return num1 - num2;
+            break;
+        case '%':
+            num2 = 1;
+            return (num1 * num2) / 100;
+            break;
+        case '!':
+            return (num1 * -1);
+            break;
     }
 }
 
@@ -24,8 +42,8 @@ let operate = (o, num1, num2) => {
 let input = '';
 
 // initial values
-let inputNum1 = 0;
-let inputNum2 = 0;
+let inputNum1 = '';
+let inputNum2 = '';
 let op = '';
 
 // check for operator pressing
@@ -45,12 +63,12 @@ const displayInput = (num, boxText, char) => {
         // if no operator is pressed
         if(!isOpPressed(op)){
             // take input as 1st number
-            inputNum1 = +input;
+            inputNum1 = input;
 
         } // if not
         else if(isOpPressed(op)){
             // take as 2nd number 
-            inputNum2 = +input;
+            inputNum2 = input;
         }
     }
     else
@@ -60,14 +78,24 @@ const displayInput = (num, boxText, char) => {
 // calculate previous operations
 function calculatePrevious(op){
     if(isOpPressed(op)){
+        noNum2(op, inputNum2);
         
         // calculate the previous values and insert as 1st value 
         inputNum1 = operate(op, inputNum1, inputNum2);
         // display the calculated value
         displayText.textContent = inputNum1;
-        inputNum2 = 0;
+        inputNum2 = '';
    }
 }  
+
+// if there is no 2nd number to proceed calculation
+function noNum2(o, n2){
+    if(n2 === ''){
+        if(op === '*' || op === '/'){
+            inputNum2 = '1';
+        }  
+    }
+}
 
 
 // event listener for each button
@@ -78,24 +106,33 @@ allBtns.addEventListener("click", (e) => {
         case "clear":
             // show 0 on clearing the screen
             displayText.textContent = "0";
-            inputNum1 = inputNum2 = 0;
+            inputNum1 = inputNum2 = '';
             op = '';
             // empty the  input array 
             input= '';
             break;
 
         case "change-sign":
-
-            console.log("sign-changed");
-
+            calculatePrevious(op);
+            op = '!';
+            input = '';
+            inputNum1 = (operate(op, inputNum1, inputNum2));
+            displayText.textContent = inputNum1;
+            input = '';
+            inputNum2 = '';
+            op = '';
             break;
 
         case "percent":
-            console.log("percent");
-            break;
-
-        case "div":
-            console.log("divide");
+            calculatePrevious(op);
+            op = '%';
+            input = '';
+            inputNum1 =  (operate(op, inputNum1, inputNum2));
+            displayText.textContent = inputNum1; 
+            input = '';
+            inputNum2 = '';
+            op = '';
+            
             break;
 
         case "seven":
@@ -149,16 +186,21 @@ allBtns.addEventListener("click", (e) => {
             break;
         
         case "div":
+            calculatePrevious(op);
             op = '/';
+            input = '';
             break;
 
         case "product":
-            console.log("product");
+            calculatePrevious(op);
+            op = '*';
+            input = '';
             break;
         
         case "subtract":
+            calculatePrevious(op);
             op = '-';
-            console.log("subtract");
+            input = '';
             break;
         
         case "sum":
@@ -168,17 +210,14 @@ allBtns.addEventListener("click", (e) => {
             break; 
 
         case "equal":
-            
+            noNum2(op, inputNum2);
+
             inputNum1 =  (operate(op, inputNum1, inputNum2));
             displayText.textContent = inputNum1; 
             input = '';
-            inputNum2 = 0;
+            inputNum2 = '';
             op = '';
             break;
     }
 
-
-
 });
-
-
