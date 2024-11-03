@@ -24,12 +24,7 @@ let operate = (o, num1, num2) => {
             return num1 * num2;
             break;
         case '/':
-            if(num2 === 0){
-                return "OOPS";
-            }
-            else{
                 return num1 / num2;
-            }
             break;
         case '-':
             return num1 - num2;
@@ -86,10 +81,15 @@ function calculatePrevious(op){
         noNum2(op, inputNum2);
 
         // calculate the previous values and insert as 1st value 
-        inputNum1 = operate(op, inputNum1, inputNum2);
-        inputNum1 = roundAccurately(inputNum1);
+        if(inputNum2 == '0'){
+            displayText.textContent = "OOPS";
+        }
+        else{
+            inputNum1 = operate(op, inputNum1, inputNum2);
+            inputNum1 = roundAccurately(inputNum1);
+            displayText.textContent = inputNum1;
+        }
         // display the calculated value
-        displayText.textContent = inputNum1;
         inputNum2 = '';
    }
 }  
@@ -217,9 +217,15 @@ allBtns.addEventListener("click", (e) => {
 
         case "equal":
             noNum2(op, inputNum2);
-            inputNum1 = operate(op, inputNum1, inputNum2);
-            inputNum1 =  roundAccurately(inputNum1);
-            displayText.textContent = inputNum1; 
+            if(inputNum2 == '0'){
+                displayText.textContent = "OOPS";
+
+            }
+            else{
+                inputNum1 = operate(op, inputNum1, inputNum2);
+                inputNum1 = roundAccurately(inputNum1);
+                displayText.textContent = inputNum1; 
+            }
             input = '';
             inputNum2 = '';
             op = '';
