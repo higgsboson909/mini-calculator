@@ -12,6 +12,7 @@ let operate = (o, num1, num2) => {
     num1 = +num1;
     num2 = +num2;
     switch(o){
+
         // num1 as output if no operation is performed 
         case '':
             return num1;
@@ -23,7 +24,12 @@ let operate = (o, num1, num2) => {
             return num1 * num2;
             break;
         case '/':
-            return num1 / num2;
+            if(num2 === 0){
+                return "OOPS";
+            }
+            else{
+                return num1 / num2;
+            }
             break;
         case '-':
             return num1 - num2;
@@ -34,7 +40,6 @@ let operate = (o, num1, num2) => {
             break;
         case '!':
             return (num1 * -1);
-            break;
     }
 }
 
